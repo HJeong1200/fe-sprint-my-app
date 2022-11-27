@@ -1,5 +1,15 @@
+import Main from "./Main";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 function App() {
-  return <div className="App">To-Do App</div>;
+  return (
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
