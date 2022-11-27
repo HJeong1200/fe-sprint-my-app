@@ -7,7 +7,7 @@ const TodoList = function () {
   const onKeyDown = (e) => {
     if (window.event.keyCode === 13) {
       let newTodo = e.target.value;
-      setTodo([newTodo, ...todo]);
+      setTodo([...todo, newTodo]);
       e.target.value = "";
     }
   };
@@ -16,7 +16,7 @@ const TodoList = function () {
     <div className="todo-wrapper">
       <ul className="todo-list">
         {todo.map((el, idx) => {
-          return <Todo todo={todo} idx={idx} key={idx} />;
+          return <Todo todo={todo} idx={idx} key={idx} setTodo={setTodo} />;
         })}
       </ul>
       <input
