@@ -1,5 +1,9 @@
 const Header = function () {
-  return <header>To Do</header>;
+  return (
+    <header>
+      <div className="title">To Do</div>
+    </header>
+  );
 };
 
 export default Header;

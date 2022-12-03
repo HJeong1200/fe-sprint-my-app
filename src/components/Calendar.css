@@ -1,19 +1,28 @@
-.calendar-wrapper button {
-  background-color: #fefefe;
-  border: none;
-}
+@import "react-calendar/dist/Calendar.css";
 
 .react-calendar {
-  width: 45vw;
-}
-
-.react-calendar__navigation button {
-  cursor: pointer;
+  margin: 30px 30px;
+  border: none;
+  height: 40vh;
+  width: 500px;
   font-size: 1.2rem;
 }
 
-.react-calendar__navigation button:hover {
-  background-color: #ef9bae;
-  cursor: pointer;
-  border-radius: 4px;
+.react-calendar__month-view__days {
+  height: 40vh;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  border-radius: 20px;
+}
+
+.react-calendar__tile--now {
+  background: #f8d655;
+  color: black;
+  border-radius: 20px;
+}
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #f8d655;
 }

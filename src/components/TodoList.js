@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Todo from "./Todo";
+import { nanoid } from "nanoid";
 
 const TodoList = function () {
-  const [todo, setTodo] = useState(["밥먹기", "코딩하기"]);
+  const [todoList, setTodoList] = useState(
+    JSON.parse(localStorage.getItem("myTodo")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("myTodo", JSON.stringify(todoList));
+  }, [todoList]);
 
   const onKeyDown = (e) => {
     if (window.event.keyCode === 13) {
       let newTodo = e.target.value;
-      setTodo([...todo, newTodo]);
+      setTodoList([
+        ...todoList,
+        { id: nanoid(), todo: newTodo, isActive: false },
+      ]);
       e.target.value = "";
     }
   };
@@ -15,15 +25,41 @@ const TodoList = function () {
   return (
     <div className="todo-wrapper">
       <ul className="todo-list">
-        {todo.map((el, idx) => {
-          return <Todo todo={todo} idx={idx} key={idx} setTodo={setTodo} />;
+        {todoList.map((el, idx) => {
+          if (idx % 2) {
+            return (
+              <Todo
+                key={el.id}
+                todo={el.todo}
+                todoObj={el}
+                todoList={todoList}
+                setTodoList={setTodoList}
+                myClass="inverted"
+              />
+            );
+          } else {
+            return (
+              <Todo
+                key={el.id}
+                todo={el.todo}
+                todoObj={el}
+                todoList={todoList}
+                setTodoList={setTodoList}
+                myClass=""
+              />
+            );
+          }
         })}
       </ul>
-      <input
-        className="todo-input"
-        placeholder="할일 추가하기"
-        onKeyDown={onKeyDown}
-      />
+      <div className="input-wrapper">
+        <button>+</button>
+        <input
+          id="todo-input"
+          className="todo-input"
+          placeholder="할일 추가하기"
+          onKeyDown={onKeyDown}
+        />
+      </div>
     </div>
   );
 };

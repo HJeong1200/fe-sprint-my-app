@@ -6,9 +6,12 @@ function MyCalendar() {
   const [value, onChange] = useState(new Date());
 
   return (
-    <div className="calendar-wrapper">
-      <Calendar onChange={onChange} value={value} />
-    </div>
+    <Calendar
+      onChange={onChange}
+      value={value}
+      next2Label={null}
+      prev2Label={null}
+    />
   );
 }
 

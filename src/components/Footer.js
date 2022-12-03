@@ -1,7 +1,9 @@
 const Footer = function () {
   return (
     <>
-      <footer>HJeong1200</footer>
+      <footer>
+        <div>© Copyright 2022 HJeong1200</div>
+      </footer>
     </>
   );
 };
