@@ -16,7 +16,7 @@ const TodoList = function () {
       let newTodo = e.target.value;
       setTodoList([
         ...todoList,
-        { id: nanoid(), todo: newTodo, isActive: false },
+        { id: nanoid(), todo: newTodo, isActive: false, memo: "" },
       ]);
       e.target.value = "";
     }
@@ -26,28 +26,17 @@ const TodoList = function () {
     <div className="todo-wrapper">
       <ul className="todo-list">
         {todoList.map((el, idx) => {
+          const todoArgs = {
+            key: el.id,
+            todo: el.todo,
+            todoObj: el,
+            todoList: todoList,
+            setTodoList: setTodoList,
+          };
           if (idx % 2) {
-            return (
-              <Todo
-                key={el.id}
-                todo={el.todo}
-                todoObj={el}
-                todoList={todoList}
-                setTodoList={setTodoList}
-                myClass="inverted"
-              />
-            );
+            return <Todo {...todoArgs} myClass="inverted" />;
           } else {
-            return (
-              <Todo
-                key={el.id}
-                todo={el.todo}
-                todoObj={el}
-                todoList={todoList}
-                setTodoList={setTodoList}
-                myClass=""
-              />
-            );
+            return <Todo {...todoArgs} myClass="" />;
           }
         })}
       </ul>

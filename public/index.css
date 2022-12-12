@@ -54,6 +54,13 @@ main .left .clock-section {
 
 main .left .weather-section {
   font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+main .left .weather-section #wicon {
+  width: 80px;
+  height: 80px;
 }
 
 main .divider {
@@ -74,11 +81,39 @@ main .right h2 {
 
 main .right .todo-wrapper ul {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-main .right .todo-wrapper li {
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #94b3e2;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 7px;
+  cursor: pointer;
+}
+input[type="checkbox"]:checked + label::after {
+  content: "✔";
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
   text-align: center;
-  width: 380px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+main .right .todo-wrapper li {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 320px;
   margin: 20px;
   padding: 15px;
   border: 2px solid transparent;
@@ -88,14 +123,18 @@ main .right .todo-wrapper li {
   list-style: none;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
 }
 
-main .right .todo-wrapper .inverted {
+main .right .todo-wrapper li .todo {
+  display: flex;
+  justify-content: space-between;
+}
+
+main .right .todo-wrapper li + .inverted {
   text-align: center;
-  width: 380px;
+  width: 320px;
   margin: 20px;
   padding: 15px;
   border: 2px solid transparent;
@@ -110,18 +149,44 @@ main .right .todo-wrapper .inverted {
   font-size: 1.2rem;
 }
 
+.inverted input[type="checkbox"] + label {
+  border-color: #c5b4e3;
+}
+
 main .right .todo-wrapper li .todo-content {
-  min-width: 110px;
+  min-width: 140px;
   text-align: left;
+  line-height: 35px;
+}
+
+main .right .todo-wrapper li .memo-button {
+  border: none;
+  color: #c5b4e3;
+  border-radius: 7px;
+  background-color: #fefefe;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+main .right .todo-wrapper .inverted .memo-button {
+  color: #94b3e2;
 }
 
 main .right .todo-wrapper li .todo-delete-button {
   border: none;
-  background-color: #e75254;
+  color: #e75254;
   border-radius: 7px;
-  color: #fefefe;
+  background-color: #fefefe;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  line-height: 30px;
+}
+
+main .right .todo-wrapper .memo textarea {
+  margin-top: 15px;
+  width: 250px;
+  height: 45px;
 }
 
 main .right .todo-wrapper li button:hover {
@@ -129,7 +194,7 @@ main .right .todo-wrapper li button:hover {
 }
 
 main .right .todo-wrapper .input-wrapper {
-  width: 380px;
+  width: 320px;
   margin: 0 20px;
   padding: 16px;
   display: flex;
@@ -147,7 +212,7 @@ main .right .todo-wrapper .input-wrapper button {
 
 main .right .todo-wrapper .input-wrapper input {
   border: none;
-  width: 300px;
+  width: 250px;
   font-size: 1.1rem;
 }
 
@@ -165,6 +230,10 @@ main .right .todo-wrapper li .timer-button {
   color: #fefefe;
   font-weight: bold;
   font-size: 1rem;
+}
+
+main .right .todo-wrapper .inverted .timer-button {
+  background-color: #94b3e2;
 }
 
 footer {
@@ -188,7 +257,8 @@ footer div {
 @media (max-width: 1100px) {
   main {
     flex-direction: column;
-    margin: 200px 40px 60px 40px;
+    margin: 120px 40px 60px 40px;
+    min-height: calc(100vh - 240px);
   }
 
   main .left {
@@ -208,6 +278,7 @@ footer div {
   }
 
   main .right {
+    margin-top: 40px;
     width: 100%;
   }
 }

@@ -1,18 +1,17 @@
 import { useState } from "react";
-import Timer from "./Timer";
-import { useStopwatch } from "react-timer-hook";
+import Memo from "./Memo";
 
 function Todo({ todo, todoObj, todoList, setTodoList, myClass }) {
-  const { seconds, minutes, isRunning, start, pause } = useStopwatch({
-    autoStart: false,
-  });
   const [isActive, setIsActive] = useState(todoObj.isActive);
+  const [toggleMemo, setToggleMemo] = useState(true);
   const handleDeleteClick = () => {
-    setTodoList(
-      todoList.filter((el) => {
-        return el.id !== todoObj.id;
-      })
-    );
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      setTodoList(
+        todoList.filter((el) => {
+          return el.id !== todoObj.id;
+        })
+      );
+    }
   };
 
   const handleCheckClick = () => {
@@ -29,24 +28,34 @@ function Todo({ todo, todoObj, todoList, setTodoList, myClass }) {
     );
   };
 
+  const handleMemoPopUp = () => {
+    setToggleMemo(!toggleMemo);
+  };
+
   return (
     <li className={myClass}>
-      <input
-        type="checkbox"
-        onClick={handleCheckClick}
-        defaultChecked={isActive ? true : false}
-      />
-      <div className="todo-content">{todo}</div>
-      <Timer
-        seconds={seconds}
-        minutes={minutes}
-        isRunning={isRunning}
-        start={start}
-        pause={pause}
-      />
-      <button className="todo-delete-button" onClick={handleDeleteClick}>
-        x
-      </button>
+      <div className="todo">
+        <input
+          type="checkbox"
+          onClick={handleCheckClick}
+          defaultChecked={isActive ? true : false}
+          className="checkbox"
+          id={todoObj.id}
+        />
+        <label htmlFor={todoObj.id}></label>
+        <div className="todo-content">{todo}</div>
+        <div className="right-buttons">
+          <button className="todo-delete-button" onClick={handleDeleteClick}>
+            ✖︎
+          </button>
+          <button className="memo-button" onClick={handleMemoPopUp}>
+            {toggleMemo ? "◀︎" : "▼"}
+          </button>
+        </div>
+      </div>
+      <div className="memo" style={{ display: toggleMemo ? "none" : "" }}>
+        <Memo todoObj={todoObj} todoList={todoList} setTodoList={setTodoList} />
+      </div>
     </li>
   );
 }
