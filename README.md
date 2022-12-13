@@ -24,4 +24,8 @@
 
 ## 🌈 페이지 미리보기
 
-<img width="1215" alt="스크린샷 2022-12-12 오후 5 45 22" src="https://user-images.githubusercontent.com/110910408/207000776-ac4bc70b-ff27-44bb-b632-7f269f73efbc.png">
+- Desktop View
+<img width="1459" alt="스크린샷 2022-12-13 오전 10 47 04" src="https://user-images.githubusercontent.com/110910408/207206081-5488bd62-5b2e-4d40-af03-51242501c4c7.png">
+
+- Mobile View
+<img width="704" alt="스크린샷 2022-12-13 오전 10 47 42" src="https://user-images.githubusercontent.com/110910408/207206118-de634ae9-f7b8-4dd0-ab80-568b02ad000a.png">
