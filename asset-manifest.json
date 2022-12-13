@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fe-sprint-my-app/static/css/main.a98a631b.css",
+    "main.js": "/fe-sprint-my-app/static/js/main.bed650ea.js",
+    "index.html": "/fe-sprint-my-app/index.html",
+    "main.a98a631b.css.map": "/fe-sprint-my-app/static/css/main.a98a631b.css.map",
+    "main.bed650ea.js.map": "/fe-sprint-my-app/static/js/main.bed650ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a98a631b.css",
+    "static/js/main.bed650ea.js"
+  ]
+}
